@@ -1,4 +1,4 @@
-﻿const SkillsPage = ({ onBack, onNavigate }) => {
+const SkillsPage = ({ onBack, onNavigate }) => {
     const [view, setView] = useState('list'); // 'list', 'learn', 'practice', 'practice-end', 'assess'
     const [activeSkillId, setActiveSkillId] = useState(null);
     const [learnIdx, setLearnIdx] = useState(0);
@@ -74,6 +74,7 @@
                     <div className="path-tab terminology-tab" onClick={() => onNavigate('terminology')}><IconBookOpen width={14} height={14}/> Terminology</div>
                     <div className="path-tab skills-tab active" onClick={() => onNavigate('skills')}><IconTarget width={14} height={14}/> Skills</div>
                     <div className="path-tab exam-tab" onClick={() => onNavigate('exam')}><IconTrophy width={14} height={14}/> Exam Edge</div>
+                    <div className="path-tab games-tab" onClick={() => onNavigate('games')}><IconAtom width={14} height={14}/> Games & Videos</div>
                 </div>
             </div>
 
@@ -93,10 +94,10 @@
                                 </div>
                                 <div className="skill-card-actions">
                                     <div className="skill-action-row">
-                                        <button className="btn-skill" onClick={() => startLearn(skill.id)}>ðŸ“– Learn</button>
-                                        <button className="btn-skill" onClick={() => startPractice(skill.id)}>ðŸ–‹ï¸ Practice</button>
+                                        <button className="btn-skill" onClick={() => startLearn(skill.id)}>📖 Learn</button>
+                                        <button className="btn-skill" onClick={() => startPractice(skill.id)}>🖋️ Practice</button>
                                     </div>
-                                    <button className={`btn-skill-assess ${skill.assessColor}`} onClick={() => startAssess(skill.id)}>ðŸ† Assess</button>
+                                    <button className={`btn-skill-assess ${skill.assessColor}`} onClick={() => startAssess(skill.id)}>🏆 Assess</button>
                                 </div>
                             </div>
                         ))}
@@ -107,7 +108,7 @@
             {view === 'learn' && activeSkill && (
                 <div>
                     <div className="learn-top-bar">
-                        <button className="learn-back-btn" onClick={() => setView('list')}>â† Back to Skills</button>
+                        <button className="learn-back-btn" onClick={() => setView('list')}>← Back to Skills</button>
                     </div>
                     <div className="learn-layout">
                         <div className="learn-sidebar">
@@ -118,7 +119,7 @@
                             <div className="learn-sidebar-container">
                                 {activeSkill.learnSections.map((sec, idx) => (
                                     <div key={idx} className={`learn-nav-item ${learnIdx === idx ? 'active' : ''}`} onClick={() => setLearnIdx(idx)}>
-                                        <span style={{marginRight: '0.5rem', opacity: 0.6}}>ðŸ“„</span> {sec.title}
+                                        <span style={{marginRight: '0.5rem', opacity: 0.6}}>📄</span> {sec.title}
                                     </div>
                                 ))}
                             </div>
@@ -150,17 +151,17 @@
                                 
                                 {activeSkill.learnSections[learnIdx].alert && (
                                     <div className="learn-alert">
-                                        <div className="learn-alert-title">ðŸ’¡ {activeSkill.learnSections[learnIdx].alert.title}</div>
+                                        <div className="learn-alert-title">💡 {activeSkill.learnSections[learnIdx].alert.title}</div>
                                         <p>{activeSkill.learnSections[learnIdx].alert.content}</p>
                                     </div>
                                 )}
                             </div>
                             <div className="learn-footer">
                                 <button className="btn-learn-nav" onClick={() => learnIdx > 0 ? setLearnIdx(prev => prev - 1) : setView('list')}>
-                                    â† Previous
+                                    ← Previous
                                 </button>
                                 <button className="btn-learn-next" onClick={() => learnIdx < activeSkill.learnSections.length - 1 ? setLearnIdx(prev => prev + 1) : setView('list')}>
-                                    {learnIdx < activeSkill.learnSections.length - 1 ? 'Next Topic â†’' : 'Finish Lesson âœ”'}
+                                    {learnIdx < activeSkill.learnSections.length - 1 ? 'Next Topic →' : 'Finish Lesson ✔'}
                                 </button>
                             </div>
                         </div>
@@ -172,7 +173,7 @@
                 <div>
                     <div className="quiz-container content-card">
                         <div className="learn-top-bar" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
-                            <button className="learn-back-btn" onClick={() => setView('list')}>â† Exit Practice</button>
+                            <button className="learn-back-btn" onClick={() => setView('list')}>← Exit Practice</button>
                             <div style={{fontSize: '0.85rem', fontWeight: 700, color: '#3b82f6'}}>Practice {qIdx + 1}/{activeSkill.practiceQuestions.length}</div>
                         </div>
                         <div className="quiz-question">{activeSkill.practiceQuestions[qIdx].q}</div>
@@ -192,7 +193,7 @@
                         </div>
                         {isAnswered && (
                             <div className={`practice-feedback ${selectedOpt === activeSkill.practiceQuestions[qIdx].answer ? 'correct' : 'wrong'}`}>
-                                <strong>{selectedOpt === activeSkill.practiceQuestions[qIdx].answer ? 'âœ“ Correct!' : 'âœ• Not quite!'}</strong>
+                                <strong>{selectedOpt === activeSkill.practiceQuestions[qIdx].answer ? '✓ Correct!' : '✕ Not quite!'}</strong>
                                 <p style={{margin: '0.5rem 0 0 0'}}>{activeSkill.practiceQuestions[qIdx].explanation}</p>
                             </div>
                         )}
@@ -203,7 +204,7 @@
                                 disabled={qIdx === 0}
                                 style={{ opacity: qIdx === 0 ? 0.5 : 1, cursor: qIdx === 0 ? 'not-allowed' : 'pointer', padding: '0.75rem 1.5rem' }}
                             >
-                                â† Previous Question
+                                ← Previous Question
                             </button>
                             <button 
                                 className="quiz-next-btn" 
@@ -211,7 +212,7 @@
                                 disabled={!isAnswered}
                                 style={{ margin: 0, opacity: !isAnswered ? 0.5 : 1, cursor: !isAnswered ? 'not-allowed' : 'pointer' }}
                             >
-                                {qIdx < activeSkill.practiceQuestions.length - 1 ? 'Next Question â†’' : 'Finish Practice â†’'}
+                                {qIdx < activeSkill.practiceQuestions.length - 1 ? 'Next Question →' : 'Finish Practice →'}
                             </button>
                         </div>
                     </div>
@@ -222,7 +223,7 @@
                 <div style={{padding: '2rem 0'}}>
                     <div className="report-card">
                         <div className="report-header">
-                            <span className="report-icon">ðŸ“Š</span>
+                            <span className="report-icon">📊</span>
                             <h2>Assessment Report</h2>
                         </div>
                         
@@ -239,7 +240,7 @@
                             </div>
                             <div className="stat-box">
                                 <div className="stat-title">TIME TAKEN</div>
-                                <div className="stat-value time">â± {formatTime(timeLeft)}</div>
+                                <div className="stat-value time">⏱ {formatTime(timeLeft)}</div>
                             </div>
                         </div>
 
@@ -258,8 +259,8 @@
                                             <div className={`bk-qnum ${statusClass}`}>{i + 1}</div>
                                             <div className="bk-qtext">{q.q}</div>
                                             <div className={`bk-status ${statusClass}`}>
-                                                {isUnanswered ? 'â–  Skipped' : (isCorrect ? 'âœ“ Correct' : 'âœ• Wrong')}
-                                                <div className="bk-time">â± 5s</div>
+                                                {isUnanswered ? '■ Skipped' : (isCorrect ? '✓ Correct' : '✕ Wrong')}
+                                                <div className="bk-time">⏱ 5s</div>
                                             </div>
                                         </div>
                                         
@@ -273,8 +274,8 @@
                                                     <div key={optIdx} className={`bk-opt ${optState}`}>
                                                         <div className={`bk-opt-letter ${optState}`}>{String.fromCharCode(65+optIdx)}</div>
                                                         <div className="bk-opt-text">{opt}</div>
-                                                        {optState === 'correct' && <div className="bk-opt-icon correct">âœ“</div>}
-                                                        {optState === 'wrong' && <div className="bk-opt-icon wrong">âœ•</div>}
+                                                        {optState === 'correct' && <div className="bk-opt-icon correct">✓</div>}
+                                                        {optState === 'wrong' && <div className="bk-opt-icon wrong">✕</div>}
                                                     </div>
                                                 );
                                             })}
@@ -286,7 +287,7 @@
                                             </div>
                                             {isSolOpen && (
                                                 <div className="bk-solution-box">
-                                                    <div className="sol-title">ðŸ’¡ Step-by-Step Logic</div>
+                                                    <div className="sol-title">💡 Step-by-Step Logic</div>
                                                     <div className="sol-content">{q.explanation}</div>
                                                 </div>
                                             )}
@@ -329,7 +330,7 @@
                                 disabled={qIdx === 0}
                                 style={{ opacity: qIdx === 0 ? 0.5 : 1, cursor: qIdx === 0 ? 'not-allowed' : 'pointer' }}
                             >
-                                â† Previous
+                                ← Previous
                             </button>
                             
                             <button 
@@ -342,7 +343,7 @@
                             
                             {qIdx < activeSkill.practiceQuestions.length - 1 ? (
                                 <button className="quiz-next-btn" style={{margin:0}} onClick={() => setQIdx(qIdx + 1)}>
-                                    Next â†’
+                                    Next →
                                 </button>
                             ) : (
                                 <button className="btn-submit-assess" style={{margin:0, width: 'auto'}} onClick={() => setView('practice-end')}>
@@ -354,7 +355,7 @@
                     
                     <div>
                         <div className="assess-card" style={{padding: '1.5rem'}}>
-                            <div className="assess-timer">â± {formatTime(timeLeft)}</div>
+                            <div className="assess-timer">⏱ {formatTime(timeLeft)}</div>
                             <div className="palette-title">Question Palette</div>
                             <div className="palette-grid">
                                 {activeSkill.practiceQuestions.map((_, i) => {

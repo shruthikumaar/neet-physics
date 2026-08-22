@@ -1,7 +1,7 @@
-﻿const ChapterDetailPage = ({ onPathClick, onBack }) => (
+const ChapterDetailPage = ({ onPathClick, onBack }) => (
     <div className="detail-container">
         <div className="detail-left">
-            <div className="tag-outline" onClick={onBack} style={{cursor: 'pointer'}}>â† Grade 11 Physics</div>
+            <div className="tag-outline" onClick={onBack} style={{cursor: 'pointer'}}>← Grade 11 Physics</div>
             <h1>Master <br/><span>Mechanical Properties of Solids</span></h1>
             <p>Unlock the foundations of solid mechanics. From why bridges don't collapse to how springs work, master everything you need to know about elasticity, Hooke's Law, and material strength.</p>
             
@@ -62,6 +62,13 @@
                 borderColor="#ef4444" iconColor="#ef4444" icon={<IconTrophy />}
                 onClick={() => onPathClick('exam')}
             />
+            <PathItem 
+                category="Fun & Visuals"
+                title="Games, Videos & Flashcards 🎮"
+                description="Relax and learn with interactive games, curated video content, and quick-fire flashcards."
+                borderColor="#ec4899" iconColor="#ec4899" icon={<IconAtom />}
+                onClick={() => onPathClick('games')}
+            />
         </div>
     </div>
 );
@@ -83,7 +90,7 @@ const QuestionCard = ({ id, color, icon, title, subtitle, content, funFact, isOp
                 <div className="q-content">
                     <p>{content}</p>
                     <div className="q-fun-fact">
-                        <span>â­ Fun Fact:</span> {funFact}
+                        <span>⭐ Fun Fact:</span> {funFact}
                     </div>
                 </div>
             )}

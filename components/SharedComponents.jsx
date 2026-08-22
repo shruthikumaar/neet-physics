@@ -1,4 +1,4 @@
-﻿const Navbar = ({ onHomeClick }) => (
+const Navbar = ({ onHomeClick }) => (
     <nav className="navbar">
         <div className="nav-brand" onClick={onHomeClick}>
             <img src="./logo.png" alt="Learners Logo" style={{width: 36, height: 36, objectFit: 'contain', borderRadius: '50%'}} />

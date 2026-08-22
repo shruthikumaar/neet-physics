@@ -1,4 +1,4 @@
-﻿const HomePage = ({ onChapterClick, onGradeClick }) => {
+const HomePage = ({ onChapterClick, onGradeClick }) => {
     const chapters = [
         {
             id: 'laws_of_motion',
@@ -41,7 +41,7 @@
             </div>
             
             <div className="header-section">
-                <div className="tag">GRADE 11 â€¢ PHYSICS</div>
+                <div className="tag">GRADE 11 • PHYSICS</div>
                 <div className="title-container">
                     <div className="title-icon-container"><IconBook /></div>
                     <h1 className="page-title">Physics Chapters</h1>

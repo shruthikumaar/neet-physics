@@ -1,4 +1,4 @@
-﻿const TerminologyPage = ({ onBack, onNext, onNavigate }) => {
+const TerminologyPage = ({ onBack, onNext, onNavigate }) => {
     const [tab, setTab] = useState('terms');
     const [selTerm, setSelTerm] = useState('t1');
     const [selLaw, setSelLaw] = useState('l1');
@@ -50,6 +50,7 @@
                     <div className="path-tab terminology-tab active" onClick={() => onNavigate('terminology')}><IconBookOpen width={14} height={14}/> Terminology</div>
                     <div className="path-tab skills-tab" onClick={() => onNavigate('skills')}><IconTarget width={14} height={14}/> Skills</div>
                     <div className="path-tab exam-tab" onClick={() => onNavigate('exam')}><IconTrophy width={14} height={14}/> Exam Edge</div>
+                    <div className="path-tab games-tab" onClick={() => onNavigate('games')}><IconAtom width={14} height={14}/> Games & Videos</div>
                 </div>
             </div>
 
@@ -60,13 +61,13 @@
 
             <div className="pill-nav">
                 <button className={`pill-btn ${tab === 'terms' ? 'active' : ''}`} onClick={() => setTab('terms')}>
-                    ðŸ·ï¸ Key Terms
+                    🏷️ Key Terms
                 </button>
                 <button className={`pill-btn ${tab === 'laws' ? 'active' : ''}`} onClick={() => setTab('laws')}>
-                    âš–ï¸ Elastic Laws
+                    ⚖️ Elastic Laws
                 </button>
                 <button className={`pill-btn ${tab === 'quiz' ? 'active' : ''}`} onClick={() => setTab('quiz')}>
-                    âœï¸ Quiz Time
+                    ✏️ Quiz Time
                 </button>
             </div>
 
@@ -109,7 +110,7 @@
                             <div className={`split-col ${tab === 'laws' ? 'theme-green' : ''}`}>
                                 <h4>{tab === 'terms' ? 'QUICK MEMORY' : 'STUDENT TIP'}</h4>
                                 <div className={`hint-box ${tab === 'laws' ? 'hint-green' : ''}`}>
-                                    <strong>ðŸ’¡ {tab === 'terms' ? 'Pro-Hint:' : 'Formula:'}</strong>
+                                    <strong>💡 {tab === 'terms' ? 'Pro-Hint:' : 'Formula:'}</strong>
                                     {activeItem.hint}
                                 </div>
                             </div>
@@ -165,7 +166,7 @@
                             disabled={qIdx === 0}
                             style={{ opacity: qIdx === 0 ? 0.5 : 1, cursor: qIdx === 0 ? 'not-allowed' : 'pointer', padding: '0.75rem 1.5rem' }}
                         >
-                            â† Previous Question
+                            ← Previous Question
                         </button>
                         <button 
                             className="quiz-next-btn" 
@@ -173,7 +174,7 @@
                             disabled={!isAnswered}
                             style={{ margin: 0, opacity: !isAnswered ? 0.5 : 1, cursor: !isAnswered ? 'not-allowed' : 'pointer' }}
                         >
-                            {qIdx < quizData.length - 1 ? 'Next Question â†’' : 'Finish Quiz â†’'}
+                            {qIdx < quizData.length - 1 ? 'Next Question →' : 'Finish Quiz →'}
                         </button>
                     </div>
                 </div>
@@ -181,12 +182,12 @@
 
             {tab === 'quiz' && isFinished && (
                 <div className="quiz-container content-card" style={{maxWidth: '700px', margin: '0 auto 4rem', textAlign: 'center', padding: '4rem 2rem'}}>
-                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>ðŸ’ª</div>
+                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>💪</div>
                     <h2 style={{fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem', color: '#1e293b'}}>Great effort!</h2>
                     <p style={{color: 'var(--text-secondary)', marginBottom: '2rem'}}>You scored <strong>{score} / {quizData.length}</strong></p>
                     <div style={{display: 'flex', gap: '1rem', justifyContent: 'center'}}>
                         <button className="btn-outline" onClick={resetQuiz} style={{padding: '0.75rem 1.5rem', borderRadius: '9999px', border: '1px solid #3b82f6', color: '#3b82f6', background: 'transparent', fontWeight: 700, cursor: 'pointer'}}>Try Again</button>
-                        <button className="btn-solid" onClick={onNext} style={{padding: '0.75rem 1.5rem', borderRadius: '9999px', border: 'none', color: 'white', background: '#2563eb', fontWeight: 700, cursor: 'pointer'}}>Practical Skills â†’</button>
+                        <button className="btn-solid" onClick={onNext} style={{padding: '0.75rem 1.5rem', borderRadius: '9999px', border: 'none', color: 'white', background: '#2563eb', fontWeight: 700, cursor: 'pointer'}}>Practical Skills →</button>
                     </div>
                 </div>
             )}

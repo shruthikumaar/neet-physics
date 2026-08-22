@@ -1,4 +1,4 @@
-﻿const SubjectSelectionPage = ({ onSubjectClick }) => {
+const SubjectSelectionPage = ({ onSubjectClick }) => {
     const subjects = [
         {
             id: 'math',

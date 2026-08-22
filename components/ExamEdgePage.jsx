@@ -1,4 +1,4 @@
-﻿const ExamEdgePage = ({ onBack, onNavigate }) => {
+const ExamEdgePage = ({ onBack, onNavigate }) => {
     const [activeTab, setActiveTab] = useState('neet');
     const data = examEdgeData[activeTab];
 
@@ -15,6 +15,7 @@
                     <div className="path-tab terminology-tab" onClick={() => onNavigate('terminology')}><IconBookOpen width={14} height={14}/> Terminology</div>
                     <div className="path-tab skills-tab" onClick={() => onNavigate('skills')}><IconTarget width={14} height={14}/> Skills</div>
                     <div className="path-tab exam-tab active" onClick={() => onNavigate('exam')}><IconTrophy width={14} height={14}/> Exam Edge</div>
+                    <div className="path-tab games-tab" onClick={() => onNavigate('games')}><IconAtom width={14} height={14}/> Games & Videos</div>
                 </div>
             </div>
 
@@ -54,7 +55,7 @@
                         {data.focus}
                     </div>
 
-                    <h3 className="section-subtitle">ðŸ“š Previous Year Questions (Trend)</h3>
+                    <h3 className="section-subtitle">📚 Previous Year Questions (Trend)</h3>
                     {data.pyqs.map((pyq, i) => (
                         <div key={i} className="pyq-card">
                             <div className="pyq-year">{pyq.year}</div>
@@ -68,7 +69,7 @@
                 </div>
 
                 <div className="exam-section-center">
-                    <h2 className="section-title">ðŸ“ Formula Sheet</h2>
+                    <h2 className="section-title">📐 Formula Sheet</h2>
                     <p className="section-desc">All key formulae from Mechanical Properties of Solids in one place.</p>
                     
                     <table className="formula-table">
@@ -92,13 +93,13 @@
                 </div>
 
                 <div className="exam-section-center">
-                    <h2 className="section-title">âš¡ Quick Revision Module</h2>
+                    <h2 className="section-title">⚡ Quick Revision Module</h2>
                     <p className="section-desc">Everything you need for last-minute revision. One card = one topic.</p>
                     
                     <div className="revision-grid">
                         {data.revisionCards.map((card, i) => (
                             <div key={i} className="revision-card">
-                                <h4>âš¡ {card.title}</h4>
+                                <h4>⚡ {card.title}</h4>
                                 <ul>
                                     {card.points.map((pt, j) => <li key={j}>{pt}</li>)}
                                 </ul>
@@ -107,12 +108,12 @@
                     </div>
 
                     <div className="final-strategy-box">
-                        <div className="final-label">âš¡ FINAL EXAM STRATEGY</div>
+                        <div className="final-label">⚡ FINAL EXAM STRATEGY</div>
                         <p>{data.finalStrategy}</p>
                     </div>
 
                     <div style={{textAlign: 'center', marginTop: '3rem'}}>
-                        <button className="btn-finish-topic" onClick={() => onBack('detail')}>Finish Topic âœ“</button>
+                        <button className="btn-finish-topic" onClick={() => onBack('detail')}>Finish Topic ✓</button>
                     </div>
                 </div>
             </div>
