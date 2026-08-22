@@ -64,7 +64,7 @@ const ChapterDetailPage = ({ onPathClick, onBack }) => (
             />
             <PathItem 
                 category="Fun & Visuals"
-                title="Games, Videos & Flashcards 🎮"
+                title="Games, Videos & Flashcards"
                 description="Relax and learn with interactive games, curated video content, and quick-fire flashcards."
                 borderColor="#ec4899" iconColor="#ec4899" icon={<IconAtom />}
                 onClick={() => onPathClick('games')}
@@ -90,7 +90,7 @@ const QuestionCard = ({ id, color, icon, title, subtitle, content, funFact, isOp
                 <div className="q-content">
                     <p>{content}</p>
                     <div className="q-fun-fact">
-                        <span>⭐ Fun Fact:</span> {funFact}
+                        <span style={{display: 'inline-flex', alignItems: 'center', gap: '0.25rem', color: '#f59e0b'}}><IconZap width={14} height={14}/> Fun Fact:</span> {funFact}
                     </div>
                 </div>
             )}

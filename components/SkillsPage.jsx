@@ -94,10 +94,10 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                                 </div>
                                 <div className="skill-card-actions">
                                     <div className="skill-action-row">
-                                        <button className="btn-skill" onClick={() => startLearn(skill.id)}>📖 Learn</button>
-                                        <button className="btn-skill" onClick={() => startPractice(skill.id)}>🖋️ Practice</button>
+                                        <button className="btn-skill" onClick={() => startLearn(skill.id)}><div style={{display: 'flex', alignItems: 'center', gap: '0.4rem', justifyContent: 'center'}}><IconBookOpen width={14} height={14}/> Learn</div></button>
+                                        <button className="btn-skill" onClick={() => startPractice(skill.id)}><div style={{display: 'flex', alignItems: 'center', gap: '0.4rem', justifyContent: 'center'}}><IconTestTube width={14} height={14}/> Practice</div></button>
                                     </div>
-                                    <button className={`btn-skill-assess ${skill.assessColor}`} onClick={() => startAssess(skill.id)}>🏆 Assess</button>
+                                    <button className={`btn-skill-assess ${skill.assessColor}`} onClick={() => startAssess(skill.id)}><div style={{display: 'flex', alignItems: 'center', gap: '0.4rem', justifyContent: 'center'}}><IconTrophy width={14} height={14}/> Assess</div></button>
                                 </div>
                             </div>
                         ))}
@@ -119,7 +119,7 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                             <div className="learn-sidebar-container">
                                 {activeSkill.learnSections.map((sec, idx) => (
                                     <div key={idx} className={`learn-nav-item ${learnIdx === idx ? 'active' : ''}`} onClick={() => setLearnIdx(idx)}>
-                                        <span style={{marginRight: '0.5rem', opacity: 0.6}}>📄</span> {sec.title}
+                                        <span style={{marginRight: '0.5rem', opacity: 0.6, display: 'inline-flex', verticalAlign: 'middle'}}><IconBook width={14} height={14}/></span> {sec.title}
                                     </div>
                                 ))}
                             </div>
@@ -151,7 +151,7 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                                 
                                 {activeSkill.learnSections[learnIdx].alert && (
                                     <div className="learn-alert">
-                                        <div className="learn-alert-title">💡 {activeSkill.learnSections[learnIdx].alert.title}</div>
+                                        <div className="learn-alert-title" style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}><IconZap width={16} height={16}/> {activeSkill.learnSections[learnIdx].alert.title}</div>
                                         <p>{activeSkill.learnSections[learnIdx].alert.content}</p>
                                     </div>
                                 )}
@@ -193,7 +193,7 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                         </div>
                         {isAnswered && (
                             <div className={`practice-feedback ${selectedOpt === activeSkill.practiceQuestions[qIdx].answer ? 'correct' : 'wrong'}`}>
-                                <strong>{selectedOpt === activeSkill.practiceQuestions[qIdx].answer ? '✓ Correct!' : '✕ Not quite!'}</strong>
+                                <strong>{selectedOpt === activeSkill.practiceQuestions[qIdx].answer ? <span style={{display: 'flex', alignItems: 'center', gap: '0.25rem'}}><IconCheck width={16} height={16}/> Correct!</span> : <span style={{display: 'flex', alignItems: 'center', gap: '0.25rem'}}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Not quite!</span>}</strong>
                                 <p style={{margin: '0.5rem 0 0 0'}}>{activeSkill.practiceQuestions[qIdx].explanation}</p>
                             </div>
                         )}
@@ -223,7 +223,7 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                 <div style={{padding: '2rem 0'}}>
                     <div className="report-card">
                         <div className="report-header">
-                            <span className="report-icon">📊</span>
+                            <span className="report-icon" style={{display: 'inline-flex'}}><IconClipboard width={28} height={28}/></span>
                             <h2>Assessment Report</h2>
                         </div>
                         
@@ -240,7 +240,7 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                             </div>
                             <div className="stat-box">
                                 <div className="stat-title">TIME TAKEN</div>
-                                <div className="stat-value time">⏱ {formatTime(timeLeft)}</div>
+                                <div className="stat-value time" style={{display: 'flex', alignItems: 'center', gap: '0.25rem', justifyContent: 'center'}}><IconRefreshCcw width={18} height={18}/> {formatTime(timeLeft)}</div>
                             </div>
                         </div>
 
@@ -259,8 +259,8 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                                             <div className={`bk-qnum ${statusClass}`}>{i + 1}</div>
                                             <div className="bk-qtext">{q.q}</div>
                                             <div className={`bk-status ${statusClass}`}>
-                                                {isUnanswered ? '■ Skipped' : (isCorrect ? '✓ Correct' : '✕ Wrong')}
-                                                <div className="bk-time">⏱ 5s</div>
+                                                {isUnanswered ? <span style={{display: 'flex', alignItems: 'center', gap: '0.25rem'}}><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg> Skipped</span> : (isCorrect ? <span style={{display: 'flex', alignItems: 'center', gap: '0.25rem'}}><IconCheck width={14} height={14}/> Correct</span> : <span style={{display: 'flex', alignItems: 'center', gap: '0.25rem'}}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Wrong</span>)}
+                                                <div className="bk-time" style={{display: 'flex', alignItems: 'center', gap: '0.25rem'}}><IconRefreshCcw width={12} height={12}/> 5s</div>
                                             </div>
                                         </div>
                                         
@@ -274,8 +274,8 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                                                     <div key={optIdx} className={`bk-opt ${optState}`}>
                                                         <div className={`bk-opt-letter ${optState}`}>{String.fromCharCode(65+optIdx)}</div>
                                                         <div className="bk-opt-text">{opt}</div>
-                                                        {optState === 'correct' && <div className="bk-opt-icon correct">✓</div>}
-                                                        {optState === 'wrong' && <div className="bk-opt-icon wrong">✕</div>}
+                                                        {optState === 'correct' && <div className="bk-opt-icon correct"><IconCheck width={14} height={14}/></div>}
+                                                        {optState === 'wrong' && <div className="bk-opt-icon wrong"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div>}
                                                     </div>
                                                 );
                                             })}
@@ -287,7 +287,7 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                                             </div>
                                             {isSolOpen && (
                                                 <div className="bk-solution-box">
-                                                    <div className="sol-title">💡 Step-by-Step Logic</div>
+                                                    <div className="sol-title" style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}><IconZap width={16} height={16}/> Step-by-Step Logic</div>
                                                     <div className="sol-content">{q.explanation}</div>
                                                 </div>
                                             )}
@@ -355,7 +355,7 @@ const SkillsPage = ({ onBack, onNavigate }) => {
                     
                     <div>
                         <div className="assess-card" style={{padding: '1.5rem'}}>
-                            <div className="assess-timer">⏱ {formatTime(timeLeft)}</div>
+                            <div className="assess-timer" style={{display: 'flex', alignItems: 'center', gap: '0.4rem', justifyContent: 'center'}}><IconRefreshCcw width={16} height={16}/> {formatTime(timeLeft)}</div>
                             <div className="palette-title">Question Palette</div>
                             <div className="palette-grid">
                                 {activeSkill.practiceQuestions.map((_, i) => {

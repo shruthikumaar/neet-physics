@@ -21,13 +21,12 @@ const GamesAndVideosPage = ({ onBack, onNavigate }) => {
 
     const videos = [
         { 
-            title: "🚀 Elasticity in Real Life (NEET prep)", 
+            title: <span style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}><IconGlobe width={18} height={18}/> Elasticity in Real Life (NEET prep)</span>, 
             desc: "Watch how elasticity concepts are tested in NEET.",
-            embedCode: `<!-- Elasticity in Real Life - Same frame as Hooke's Law -->
-<iframe src="/elasticity-real-life.html" width="100%" height="520" style="border:0; border-radius:18px; overflow:hidden; max-width:720px; display:block; margin:0 auto; background:#fff;" allow="autoplay" loading="lazy" title="Elasticity in Real Life - 15s Explainer"></iframe>`
+            embedCode: `<iframe src="/elasticity-real-life.html" width="100%" height="520" style="border:0; border-radius:18px; overflow:hidden; max-width:720px; display:block; margin:0 auto; background:#fff;" allow="autoplay" loading="lazy" title="Elasticity in Real Life - 15s Explainer"></iframe>`
         },
         { 
-            title: "🧬 Hooke's Law Experiment", 
+            title: <span style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}><IconDna width={18} height={18}/> Hooke's Law Experiment</span>, 
             desc: "A fun demonstration of Hooke's Law with previous NEET examples.",
             embedCode: `<iframe src="/hooke-law.html" width="100%" height="520" style="border:0; border-radius:16px; overflow:hidden; max-width:720px; display:block; margin:0 auto;" allow="autoplay; clipboard-write" loading="lazy" title="Hooke's Law 15s Explainer"></iframe>`
         }
@@ -67,15 +66,15 @@ const GamesAndVideosPage = ({ onBack, onNavigate }) => {
             </div>
 
             <div className="exam-nav">
-                <button className={`exam-nav-btn ${activeTab === 'flashcards' ? 'active' : ''}`} onClick={() => setActiveTab('flashcards')}>Flashcards 🗂️</button>
-                <button className={`exam-nav-btn ${activeTab === 'videos' ? 'active' : ''}`} onClick={() => setActiveTab('videos')}>Videos 🎬</button>
+                <button className={`exam-nav-btn ${activeTab === 'flashcards' ? 'active' : ''}`} onClick={() => setActiveTab('flashcards')}><div style={{display: 'flex', alignItems: 'center', gap: '0.4rem', justifyContent: 'center'}}><IconClipboard width={16} height={16}/> Flashcards</div></button>
+                <button className={`exam-nav-btn ${activeTab === 'videos' ? 'active' : ''}`} onClick={() => setActiveTab('videos')}><div style={{display: 'flex', alignItems: 'center', gap: '0.4rem', justifyContent: 'center'}}><IconAtom width={16} height={16}/> Videos</div></button>
             </div>
 
             <div className="exam-content exam-theme-neet">
                 
                 {activeTab === 'flashcards' && (
                     <div className="exam-strategy-card" style={{backgroundColor: '#f8fafc', borderColor: '#e2e8f0', padding: '3.5rem'}}>
-                        <h2 className="strategy-title" style={{borderLeftColor: '#64748b'}}>Flashcards 🗂️</h2>
+                        <h2 className="strategy-title" style={{borderLeftColor: '#64748b', display: 'flex', alignItems: 'center', gap: '0.5rem'}}><IconClipboard width={24} height={24}/> Flashcards</h2>
                         <div className="flashcards-grid" style={{gap: '2.5rem'}}>
                             {flashcards.map((card, index) => (
                                 <div 
@@ -87,7 +86,7 @@ const GamesAndVideosPage = ({ onBack, onNavigate }) => {
                                         <div className="flashcard-front" style={{boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)'}}>
                                             <div className="card-number">#{index + 1}</div>
                                             <h3>{card.q}</h3>
-                                            <p className="click-hint">Click to flip 🔄</p>
+                                            <p className="click-hint" style={{display: 'flex', alignItems: 'center', gap: '0.4rem', justifyContent: 'center'}}><IconRefreshCcw width={14} height={14}/> Click to flip</p>
                                         </div>
                                         <div className="flashcard-back" style={{boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)'}}>
                                             <h3>Answer:</h3>
@@ -102,7 +101,7 @@ const GamesAndVideosPage = ({ onBack, onNavigate }) => {
 
                 {activeTab === 'videos' && (
                     <div className="exam-strategy-card" style={{backgroundColor: '#eff6ff', borderColor: '#bfdbfe', padding: '3.5rem'}}>
-                        <h2 className="strategy-title" style={{borderLeftColor: '#3b82f6', color: '#1e3a8a'}}>Recommended Videos 🎬</h2>
+                        <h2 className="strategy-title" style={{borderLeftColor: '#3b82f6', color: '#1e3a8a', display: 'flex', alignItems: 'center', gap: '0.5rem'}}><IconAtom width={24} height={24}/> Recommended Videos</h2>
                         <div className="video-grid" style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem'}}>
                             {videos.map((vid, idx) => (
                                 <div key={idx} className="video-card" style={{backgroundColor: 'white', padding: '2.5rem', borderRadius: '16px', border: '2px solid #bfdbfe', boxShadow: '0 4px 6px -1px rgba(59, 130, 246, 0.1)'}}>

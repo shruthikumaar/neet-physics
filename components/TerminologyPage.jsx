@@ -61,13 +61,13 @@ const TerminologyPage = ({ onBack, onNext, onNavigate }) => {
 
             <div className="pill-nav">
                 <button className={`pill-btn ${tab === 'terms' ? 'active' : ''}`} onClick={() => setTab('terms')}>
-                    🏷️ Key Terms
+                    <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}><IconBook width={18} height={18}/> Key Terms</div>
                 </button>
                 <button className={`pill-btn ${tab === 'laws' ? 'active' : ''}`} onClick={() => setTab('laws')}>
-                    ⚖️ Elastic Laws
+                    <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}><IconCube width={18} height={18}/> Elastic Laws</div>
                 </button>
                 <button className={`pill-btn ${tab === 'quiz' ? 'active' : ''}`} onClick={() => setTab('quiz')}>
-                    ✏️ Quiz Time
+                    <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}><IconClipboard width={18} height={18}/> Quiz Time</div>
                 </button>
             </div>
 
@@ -110,7 +110,7 @@ const TerminologyPage = ({ onBack, onNext, onNavigate }) => {
                             <div className={`split-col ${tab === 'laws' ? 'theme-green' : ''}`}>
                                 <h4>{tab === 'terms' ? 'QUICK MEMORY' : 'STUDENT TIP'}</h4>
                                 <div className={`hint-box ${tab === 'laws' ? 'hint-green' : ''}`}>
-                                    <strong>💡 {tab === 'terms' ? 'Pro-Hint:' : 'Formula:'}</strong>
+                                    <strong style={{display: 'flex', alignItems: 'center', gap: '0.25rem'}}><IconZap width={16} height={16}/> {tab === 'terms' ? 'Pro-Hint:' : 'Formula:'}</strong>
                                     {activeItem.hint}
                                 </div>
                             </div>
@@ -182,7 +182,7 @@ const TerminologyPage = ({ onBack, onNext, onNavigate }) => {
 
             {tab === 'quiz' && isFinished && (
                 <div className="quiz-container content-card" style={{maxWidth: '700px', margin: '0 auto 4rem', textAlign: 'center', padding: '4rem 2rem'}}>
-                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>💪</div>
+                    <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem', color: '#10b981'}}><IconTrophy width={48} height={48}/></div>
                     <h2 style={{fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem', color: '#1e293b'}}>Great effort!</h2>
                     <p style={{color: 'var(--text-secondary)', marginBottom: '2rem'}}>You scored <strong>{score} / {quizData.length}</strong></p>
                     <div style={{display: 'flex', gap: '1rem', justifyContent: 'center'}}>
