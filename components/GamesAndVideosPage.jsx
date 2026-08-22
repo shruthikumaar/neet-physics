@@ -20,7 +20,12 @@ const GamesAndVideosPage = ({ onBack, onNavigate }) => {
     ];
 
     const videos = [
-        { title: "🚀 Elasticity in Real Life (NEET prep)", desc: "Watch how elasticity concepts are tested in NEET." },
+        { 
+            title: "🚀 Elasticity in Real Life (NEET prep)", 
+            desc: "Watch how elasticity concepts are tested in NEET.",
+            embedCode: `<!-- Elasticity in Real Life - Same frame as Hooke's Law -->
+<iframe src="/elasticity-real-life.html" width="100%" height="520" style="border:0; border-radius:18px; overflow:hidden; max-width:720px; display:block; margin:0 auto; background:#fff;" allow="autoplay" loading="lazy" title="Elasticity in Real Life - 15s Explainer"></iframe>`
+        },
         { 
             title: "🧬 Hooke's Law Experiment", 
             desc: "A fun demonstration of Hooke's Law with previous NEET examples.",
