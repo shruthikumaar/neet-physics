@@ -62,6 +62,13 @@
                 borderColor="#ef4444" iconColor="#ef4444" icon={<IconTrophy />}
                 onClick={() => onPathClick('exam')}
             />
+            <PathItem 
+                category="Quick Revision"
+                title="Flash Cards"
+                description="Flip through key terms, formulas, and concepts for fast revision before exams."
+                borderColor="#10b981" iconColor="#10b981" icon={<IconLayers />}
+                onClick={() => onPathClick('flashcards')}
+            />
         </div>
     </div>
 );

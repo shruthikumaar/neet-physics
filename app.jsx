@@ -12,6 +12,7 @@
             {view === 'terminology' && <TerminologyPage onBack={(path) => setView(path || 'detail')} onNext={() => setView('skills')} onNavigate={setView} />}
             {view === 'skills' && <SkillsPage onBack={(path) => setView(path || 'detail')} onNavigate={setView} />}
             {view === 'exam' && <ExamEdgePage onBack={(path) => setView(path || 'detail')} onNavigate={setView} />}
+            {view === 'flashcards' && <FlashCardsPage onBack={(path) => setView(path || 'detail')} onNavigate={setView} />}
         </div>
     );
 };
